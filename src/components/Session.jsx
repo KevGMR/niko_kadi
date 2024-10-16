@@ -114,9 +114,7 @@ export default function Session() {
       console.log(error);
       toast.error("Error occurred...")
     }
-
   }
-
 
   async function startGame() {
     const gameRef = ref(db, 'game_sessions/' + gameID);
@@ -137,8 +135,15 @@ export default function Session() {
     setOpen(false);
   };
 
-  const share = async () => {
-    await navigator.share(gameID)
+  const share = () => {
+    if (navigator.share) {
+      navigator.share({ text: gameID, title: "Share Game with Friends" })
+    } else {
+      navigator.clipboard.writeText(gameID);
+      toast.success("Code copied to clipboard")
+    }
+
+
   }
 
 
