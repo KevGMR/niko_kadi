@@ -1,9 +1,12 @@
 #root {
+  width: 100vw;
+  height: 100vh;
   /* max-width: 1280px;
   margin: 0 auto;
   padding: 2rem; */
   text-align: center;
 }
+
 
 .home{
   display: flex;
@@ -11,7 +14,8 @@
   justify-content: center;
   gap: 100px;
   height: 100%;
-  max-width: 1280px;
+  width: 100%;
+  /* max-width: 1280px; */
 }
 
 .logo img {
@@ -36,6 +40,15 @@
   flex-wrap: wrap;
   flex-direction: column;
   gap: 10px;
+  width: 100%;
+  align-items: center;
+}
+
+.session button {
+  /* width: 100%;
+  max-width: 600px; */
+  width: 80vw;
+  max-width: 600px;
 }
 
 .game {
@@ -56,11 +69,4 @@
 
 .game .right {
   width: 30vw;
-}
-
-@media only screen and (max-width: 768px) {
-  /* For mobile phones: */
-  .session {
-    margin: 0 30px;
-  }
 }

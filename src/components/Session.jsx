@@ -142,8 +142,6 @@ export default function Session() {
       navigator.clipboard.writeText(gameID);
       toast.success("Code copied to clipboard")
     }
-
-
   }
 
 
@@ -157,7 +155,7 @@ export default function Session() {
         <Button variant="contained" endIcon={<HiOutlineArrowDownTray />} onClick={() => handleOpen("join")}>
           Join a Game
         </Button>
-        <ToastContainer />
+
       </div>
       <Modal
         open={open}

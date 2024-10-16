@@ -5,6 +5,8 @@ import Navbar from "../components/Navbar";
 
 import logo from '../assets/logonobg.png'
 
+import { ToastContainer } from 'react-toastify';
+
 
 export default function Home() {
 
@@ -22,6 +24,8 @@ export default function Home() {
 
       </div>
       {user ? <Session refresh={forceUpdate} /> : <Login refresh={forceUpdate} />}
+
+      <ToastContainer />
     </div>
   )
 }
