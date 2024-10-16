@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import { db } from "../firebase/firebase";
 import { useContext, useEffect } from "react";
 import { AppContext } from "../context";
+import { Container } from "@mui/material";
 
 
 export default function Game() {
@@ -34,7 +35,16 @@ export default function Game() {
 
 
   return (
-    <div>Game</div>
+    <Container className="game">
+      <Container className="game-top">
+        <Container className="left">left</Container>
+        <Container className="right">right</Container>
+      </Container>
+      <Container className="game-bottom">
+        <Container className="left">left</Container>
+        <Container className="right">right</Container>
+      </Container>
+    </Container>
   )
 }
 

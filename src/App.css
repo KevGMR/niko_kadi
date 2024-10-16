@@ -1,7 +1,7 @@
 #root {
-  max-width: 1280px;
+  /* max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 2rem; */
   text-align: center;
 }
 
@@ -11,6 +11,7 @@
   justify-content: center;
   gap: 100px;
   height: 100%;
+  max-width: 1280px;
 }
 
 .logo img {
@@ -35,4 +36,31 @@
   flex-wrap: wrap;
   flex-direction: column;
   gap: 10px;
+}
+
+.game {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.game-top, .game-bottom {
+  display: flex;
+  flex-direction: row;
+}
+
+.game .left {
+  width: 60vw;
+}
+
+
+.game .right {
+  width: 30vw;
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .session {
+    margin: 0 30px;
+  }
 }
