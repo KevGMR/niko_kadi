@@ -3,6 +3,8 @@ import Login from "../components/Login"
 import Session from "../components/Session"
 import Navbar from "../components/Navbar";
 
+import logo from '../assets/logonobg.png'
+
 
 export default function Home() {
 
@@ -16,7 +18,7 @@ export default function Home() {
     <div className="home">
       <Navbar refresh={forceUpdate} />
       <div className="logo">
-        <img src="/src/assets/logonobg.png" alt="niko kadi logo" />
+        <img src={logo} alt="niko kadi logo" />
 
       </div>
       {user ? <Session refresh={forceUpdate} /> : <Login refresh={forceUpdate} />}
