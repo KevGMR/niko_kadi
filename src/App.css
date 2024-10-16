@@ -55,11 +55,16 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  width: 100vw;
+  height: 100vh;
+  padding: 20px 0;
+  gap: 10px;
 }
 
 .game-top, .game-bottom {
   display: flex;
   flex-direction: row;
+  gap: 10px;
 }
 
 .game .left {
@@ -69,4 +74,13 @@
 
 .game .right {
   width: 30vw;
+}
+
+.game-top {
+  height: 60vh;
+
+}
+
+.game-bottom{
+  height: 30vh;
 }

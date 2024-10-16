@@ -7,7 +7,7 @@ import { FaPlusMinus, FaRegShareFromSquare } from "react-icons/fa6";
 import { db } from '../firebase/firebase'
 import { ref, push, set, onValue } from "firebase/database";
 
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 import { AppContext } from "../context/index";
 import { useNavigate } from "react-router-dom";
