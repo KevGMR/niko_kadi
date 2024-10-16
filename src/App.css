@@ -10,7 +10,7 @@
   flex-direction: column;
   justify-content: center;
   gap: 100px;
-  height: 100vh;
+  height: 100%;
 }
 
 .logo img {
@@ -28,4 +28,11 @@
   position: fixed;
   top: 0;
   padding: 10px 0;
+}
+
+.session {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 10px;
 }
