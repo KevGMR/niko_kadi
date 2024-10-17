@@ -1,11 +1,15 @@
 import { Container } from "@mui/material";
 import PropTypes from "prop-types"
+import { useContext } from "react";
 
 import { FaHeart } from "react-icons/fa";
 import { ImSpades, ImDiamonds } from "react-icons/im";
 import { TbClubsFilled } from "react-icons/tb";
+import { AppContext } from "../../context";
 
 export default function Card({ card }) {
+
+  const { game } = useContext(AppContext)
 
   const rank = card.split(' of ')[0];
   const suite = card.split(' of ')[1];
@@ -28,9 +32,29 @@ export default function Card({ card }) {
     Diamonds: { color: "red", icon: <ImDiamonds style={{ color: "red" }} /> },
   }
 
+
+  async function playCard() {
+    console.log(canPlayCard(suite, rank))
+
+
+  }
+
+  const canPlayCard = (suite, rank) => {
+    // console.log(game);
+
+    const topCard = game.playersDeck[game.playersDeck.length - 1].split(' of ');
+    console.log(topCard[1], topCard[0]);
+    console.log(topCard);
+
+    console.log(suite, rank);
+
+
+    return suite === topCard[1] || rank === topCard[0] || rank === "Joker" || rank === "A" || topCard[1] === "Joker";
+  };
+
   if (rank === "Joker") {
     return (
-      <Container className="hcard">
+      <Container onClick={() => { playCard() }} className="hcard">
         <Container className="card-body">
           Joker
         </Container>
@@ -40,7 +64,7 @@ export default function Card({ card }) {
   }
 
   return (
-    <Container className="hcard">
+    <Container onClick={() => { playCard() }} className="hcard">
       <Container className="body" style={{
         borderColor: specs[suite].color
       }}>

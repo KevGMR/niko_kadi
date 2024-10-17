@@ -126,7 +126,7 @@
   left: 0;
   border: 1px solid grey;
   border-radius: 7px;
-  padding: 30px;
+  /* padding: 30px; */
   background: white;
 }
 
@@ -139,14 +139,14 @@
   left: 0;
   border: 1px solid grey;
   border-radius: 7px;
-  padding: 30px;
+  /* padding: 30px; */
   background: white;
 }
 
 
 .card-body, .card .body,  .hcard .body  {
   height: 100%;
-  border: 1px solid black;
+  width: 100%;
 }
 
 .card .rank, .hcard .rank {

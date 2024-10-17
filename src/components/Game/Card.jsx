@@ -7,6 +7,8 @@ import { TbClubsFilled } from "react-icons/tb";
 
 export default function Card({ card }) {
 
+
+
   const rank = card.split(' of ')[0];
   const suite = card.split(' of ')[1];
 
@@ -21,9 +23,16 @@ export default function Card({ card }) {
     Diamonds: { color: "red", icon: <ImDiamonds style={{ color: "red" }} /> },
   }
 
+  async function shuffleBack() {
+
+    console.log(suite, rank);
+
+
+  }
+
   if (rank === "Joker") {
     return (
-      <Container className="card">
+      <Container onClick={() => shuffleBack()} className="card">
         <Container className="card-body">
           Joker
         </Container>
@@ -33,7 +42,7 @@ export default function Card({ card }) {
   }
 
   return (
-    <Container className="card">
+    <Container onClick={() => shuffleBack()} className="card">
       <Container className="body" style={{
         borderColor: specs[suite].color
       }}>

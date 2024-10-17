@@ -11,10 +11,7 @@ export default function Hand() {
 
   const player = game.players.filter((p) => p.id === user.uid)[0];
 
-  async function playCard(card) {
-    console.log(card);
 
-  }
 
   return (
     <>
@@ -24,7 +21,7 @@ export default function Hand() {
           {
             player.hand?.map((card, index) => {
               return (
-                <Card onClick={() => playCard(card)} key={index} card={card} />
+                <Card key={index} card={card} local={"hand"} />
               )
             })
           }
