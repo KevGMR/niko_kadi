@@ -1,11 +1,11 @@
-import { Box, Button, IconButton, Modal, Typography } from "@mui/material";
+import { Box, Button, IconButton, Modal, TextField, Typography } from "@mui/material";
 import { useState, useContext } from "react";
 
 import { HiOutlineArrowDownTray } from "react-icons/hi2";
 import { FaPlusMinus, FaRegShareFromSquare } from "react-icons/fa6";
 
 import { db } from '../firebase/firebase'
-import { ref, push, set, onValue } from "firebase/database";
+import { ref, push, set, onValue, update } from "firebase/database";
 
 import { toast } from 'react-toastify';
 
@@ -70,8 +70,9 @@ export default function Session() {
       id: user.uid,
       name: user.displayName || "Anonymous",
       photo: user.photoURL,
-      playerHand: [],
-      isTurn: true
+      hand: [],
+      isTurn: true,
+      nikoKadi: false
     })
 
     const createDeck = () => {
@@ -106,7 +107,6 @@ export default function Session() {
         "currentTurn": user.uid,
         "penaltyCount": 0,
         "turnDirection": 1,
-        "nikoKadiDeclared": false,
         "gameOver": false
       })
 
@@ -148,6 +148,68 @@ export default function Session() {
     }
   }
 
+  const [text, setText] = useState("");
+
+  async function joinGame() {
+    const gameRef = ref(db, 'game_sessions/' + text);
+
+
+    onValue(gameRef, (snapshot) => {
+      const data = snapshot.val();
+
+      // console.log(data);
+
+      if (data) {
+        setGame(data)
+        localStorage.setItem("game_id", text);
+
+        const cDeck = JSON.parse(JSON.stringify(data.currentDeck));
+        const array = cDeck.splice(-4);
+
+        const playersToAdjust = JSON.parse(JSON.stringify(data.players));
+
+        console.log(playersToAdjust);
+
+        const loadedPlayer = data.players.filter((player) => player.id === user.uid);
+
+        if (!loadedPlayer[0]) {
+
+          const newPlayer = {
+            id: user.uid,
+            name: user.displayName || "Anonymous",
+            photo: user.photoURL,
+            hand: [...array],
+            isTurn: false,
+            nikoKadi: false
+          }
+
+          playersToAdjust.push(newPlayer);
+
+          const newGame = {
+            ...data,
+            currentDeck: cDeck,
+            players: playersToAdjust
+          }
+
+
+          const updates = {};
+          updates['/game_sessions/' + text] = newGame;
+
+          update(ref(db), updates);
+          return navigate(`/game/${text}`);
+
+        }
+
+
+      }
+
+      toast.error("Error occurred...")
+
+      // updateStarCount(postElement, data);
+    });
+
+
+  }
 
 
   return (
@@ -183,6 +245,14 @@ export default function Session() {
                 }}> <Button onClick={() => refreshGameID()}>Get New Game ID</Button> <Button onClick={startGame}>Start</Button></div>
 
               </div>
+            </div>
+          }
+          {
+            modal === "join" && <div>
+
+              <TextField onChange={(e) => setText(e.target.value)} id="outlined-basic" label="Enter game id to join" variant="outlined" />
+
+              <Button onClick={joinGame}>Load Game</Button>
             </div>
           }
         </Box>

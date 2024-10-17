@@ -11,15 +11,20 @@ export default function Hand() {
 
   const player = game.players.filter((p) => p.id === user.uid)[0];
 
+  async function playCard(card) {
+    console.log(card);
+
+  }
+
   return (
     <>
       <Container className="playing deck">
-        <p>Playing Deck</p>
+        <p>Current hand</p>
         <Container className="playing-deck-container">
           {
             player.hand?.map((card, index) => {
               return (
-                <Card key={index} card={card} />
+                <Card onClick={() => playCard(card)} key={index} card={card} />
               )
             })
           }

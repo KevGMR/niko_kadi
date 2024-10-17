@@ -41,14 +41,16 @@ export default function Game() {
         navigate('/');
       }
 
-      const loadedPlayer = data.players.filter((player) => player.id === user.uid)
+      const loadedPlayer = data.players.filter((player) => player.id === user.uid);
 
+      // if player had already joined the game then...
       if (loadedPlayer[0]) {
         // console.log(data);
 
         if (!("hand" in loadedPlayer[0])) {
 
           const cDeck = JSON.parse(JSON.stringify(data.currentDeck));
+          const startingCard = cDeck.splice(-1);
           const array = cDeck.splice(-4); // Removes the last 4 elements
 
           const playersToAdjust = JSON.parse(JSON.stringify(data.players));
@@ -64,6 +66,7 @@ export default function Game() {
           const newGame = {
             ...data,
             currentDeck: cDeck,
+            playersDeck: startingCard,
             players: playersToAdjust
           }
 
@@ -72,7 +75,7 @@ export default function Game() {
 
           return update(ref(db), updates);
         }
-      };
+      }
 
       setGame(data);
       setLoading(false);

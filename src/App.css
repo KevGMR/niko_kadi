@@ -131,7 +131,7 @@
 }
 
 
-.card, .hcard {
+.hcard {
   height: 100%;
   width: 100px !important;
   position: absolute;
@@ -207,12 +207,22 @@
 .oneplayer {
   display: flex;
   align-items: center;
-  padding: 0;
+  padding: 0 !important ;
   gap: 10px;
+  justify-content: space-between;
 }
 
 .game-top .right {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.options {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
