@@ -226,3 +226,11 @@
   align-items: center;
   gap: 20px;
 }
+
+.joker {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  padding: 4px !important;
+  width: fit-content !important;
+}

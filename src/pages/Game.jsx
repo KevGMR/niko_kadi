@@ -8,6 +8,7 @@ import Table from '../components/Game/Table';
 import Players from '../components/Game/Players';
 import Hand from '../components/Game/Hand';
 import Options from '../components/Game/Options';
+import { ToastContainer } from "react-toastify";
 
 
 
@@ -109,6 +110,7 @@ export default function Game() {
         <Container className="left"><Hand /></Container>
         <Container className="right"><Options /></Container>
       </Container>
+      <ToastContainer />
     </Container>
   )
 }

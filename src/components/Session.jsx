@@ -104,9 +104,9 @@ export default function Session() {
         "players": [...players],
         "playingDeck": [],
         "currentDeck": createDeck(),
-        "currentTurn": user.uid,
+        "currentTurn": 0,
         "penaltyCount": 0,
-        "turnDirection": 1,
+        "turnDirection": true,
         "gameOver": false
       })
 
@@ -177,7 +177,7 @@ export default function Session() {
           const newPlayer = {
             id: user.uid,
             name: user.displayName || "Anonymous",
-            photo: user.photoURL,
+            photo: user.photoURL || null,
             hand: [...array],
             isTurn: false,
             nikoKadi: false
@@ -190,7 +190,6 @@ export default function Session() {
             currentDeck: cDeck,
             players: playersToAdjust
           }
-
 
           const updates = {};
           updates['/game_sessions/' + text] = newGame;
@@ -253,6 +252,8 @@ export default function Session() {
               <TextField onChange={(e) => setText(e.target.value)} id="outlined-basic" label="Enter game id to join" variant="outlined" />
 
               <Button onClick={joinGame}>Load Game</Button>
+
+              <a href="https://docs.google.com/presentation/d/1Y58iK2ynbll4x_JMkdvbTgv3bQQ7fz_1bzZHDm5gBb0/edit?usp=sharing">Link to presentation</a>
             </div>
           }
         </Box>
