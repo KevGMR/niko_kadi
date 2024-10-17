@@ -44,11 +44,27 @@
   align-items: center;
 }
 
+
+
 .session button {
   /* width: 100%;
   max-width: 600px; */
   width: 80vw;
   max-width: 600px;
+}
+
+.login{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  align-items: center;
+}
+
+.login button {
+  width: 80vw;
+  max-width: 600px;  
 }
 
 .game {
@@ -58,22 +74,24 @@
   width: 100vw;
   height: 100vh;
   padding: 20px 0;
-  gap: 10px;
+  gap: 20px;
 }
 
 .game-top, .game-bottom {
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: 20px;
 }
 
 .game .left {
   width: 60vw;
+  border: 1px solid grey;
 }
 
 
 .game .right {
   width: 30vw;
+  border: 1px solid grey;
 }
 
 .game-top {
@@ -83,4 +101,118 @@
 
 .game-bottom{
   height: 30vh;
+}
+
+.table {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+.deck {
+  height: 60%;
+}
+
+.drawing img {
+  height: calc(100% - 45px);
+  border-radius: 7px;
+}
+
+.card {
+  height: calc(100% - 45px);
+  width: calc((100% - 45px)/ 1.4) !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 1px solid grey;
+  border-radius: 7px;
+  padding: 30px;
+  background: white;
+}
+
+
+.card, .hcard {
+  height: 100%;
+  width: 100px !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 1px solid grey;
+  border-radius: 7px;
+  padding: 30px;
+  background: white;
+}
+
+
+.card-body, .card .body,  .hcard .body  {
+  height: 100%;
+  border: 1px solid black;
+}
+
+.card .rank, .hcard .rank {
+  width: fit-content;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background: white;
+}
+
+.lower-rank {
+  width: fit-content !important;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background: white;
+}
+
+.playing-deck-container{
+ height: 100%; 
+ position: relative;
+}
+
+
+.card:nth-last-child(1) {
+  left: 80px;
+  top: 14px;
+}
+
+.card:nth-last-child(2) {
+  left: 40px;
+  top: 7px;
+}
+
+.penalty{
+  height: 5%;
+  margin: 10px 0;
+  text-decoration: underline;
+  text-underline-offset: 10px;
+}
+
+.player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 0;
+  height: 90%;
+  padding: 0;
+}
+
+.oneplayer {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  gap: 10px;
+}
+
+.game-top .right {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }

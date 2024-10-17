@@ -27,7 +27,7 @@ const style = {
 
 export default function Session() {
 
-  const user = JSON.parse(localStorage.getItem("user")).user.uid;
+  const user = JSON.parse(localStorage.getItem("user")).user;
 
 
   const [open, setOpen] = useState(false);
@@ -67,8 +67,10 @@ export default function Session() {
     const players = [];
 
     players.push({
-      id: user,
-      "hand": [],
+      id: user.uid,
+      name: user.displayName || "Anonymous",
+      photo: user.photoURL,
+      playerHand: [],
       isTurn: true
     })
 
@@ -101,12 +103,14 @@ export default function Session() {
         "players": [...players],
         "playingDeck": [],
         "currentDeck": createDeck(),
-        "currentTurn": user,
+        "currentTurn": user.uid,
         "penaltyCount": 0,
         "turnDirection": 1,
         "nikoKadiDeclared": false,
         "gameOver": false
       })
+
+
 
       toast.success("Game Created Successfully")
       setCreateLoading(false)
